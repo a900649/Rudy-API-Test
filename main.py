@@ -109,6 +109,6 @@ def download_type_2():
     return send_file(out, download_name="output.xlsx",mimetype="application/vnd.ms-excel", as_attachment=True)
 
 if __name__ == '__main__':
-    # app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=8000)
 
-    app.run(host="127.0.0.1", port=8060)
+    # app.run(host="127.0.0.1", port=8060)
