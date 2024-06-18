@@ -41,7 +41,7 @@ def send_mail_get(subject,content,receiver):
     return {"Status": "OK"}
 
 @app.route("/send_mail_post",methods = ["POST"])
-def send_mail_post(subject,content,receiver):
+def send_mail_post():
 
     smtp_server = v.smtp_server
     port = v.port
