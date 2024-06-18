@@ -74,28 +74,9 @@ def send_mail_post(subject,content,receiver):
     return {"Status": "OK"}
 
 
-@app.route("/download_type_1",methods = ["GET","POST"])
-def download_type_1():
-    df = pd.DataFrame([[1, 2], [3, 4]], columns=["A", "B"])
 
-    out = BytesIO()
-    writer = pd.ExcelWriter(out, engine='xlsxwriter')
-    df.to_excel(excel_writer=writer, sheet_name='Sheet1',)
-    writer.close()
-
-    out.seek(0)
-
-    rv = make_response(out.getvalue())
-    out.close()
-    rv.headers['Content-Type'] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    rv.headers["Cache-Control"] = "no-cache"
-    rv.headers['Content-Disposition'] = 'attachment; filename={}.xlsx'.format('Output')
-
-    return rv
-
-
-@app.route("/download_type_2",methods = ["GET","POST"])
-def download_type_2():
+@app.route("/download_excel",methods = ["GET","POST"])
+def download_excel():
     df = pd.DataFrame([[1, 2], [3, 4]], columns=["A", "B"])
 
     out = BytesIO()
